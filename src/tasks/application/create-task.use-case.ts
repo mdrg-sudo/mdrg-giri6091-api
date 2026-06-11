@@ -22,7 +22,7 @@ export class CreateTaskUseCase{
             new Date(),
         );
         
-        return this.taskRepository.create(task);
+    return await this.taskRepository.create(task);
     }
 
 }

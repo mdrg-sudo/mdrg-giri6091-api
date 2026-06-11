@@ -2,9 +2,11 @@
 import {Task} from './task.entity';
 
 export interface ITaskRepository{
-    create(): Promise<Task>;
+    create(task: Task): Promise<Task>;
     findAll(): Promise<Task[]>;
     findById(id: string): Promise<Task | null>;
+    update(task: Task): Promise<Task>;
+    delete(id: string): Promise<boolean>
 }
 
 // Token para la inyeccion de dependencias 

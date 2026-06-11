@@ -1,7 +1,7 @@
-import { CreateTaskUseCase } from "@/task/aplication/create-task.use-case";
-import { ITaskRepositoryToken } from "@/task/domain/task.repository.interface";
-import type { ITaskRepository } from "@/task/domain/task.repository.interface";
 import { Controller, Get, Post, Body, Inject } from "@nestjs/common";
+import { CreateTaskUseCase } from "@/tasks/application/create-task.use-case";
+import type { ITaskRepository } from "@/tasks/domain/task.repository.interface";
+import { ITaskRepositoryToken } from "@/tasks/domain/task.repository.interface";
 
 @Controller("tasks")
 export class TaskController {
