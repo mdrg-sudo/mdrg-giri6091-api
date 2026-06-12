@@ -23,8 +23,22 @@ export class TaskRepositoryImpl implements ITaskRepository {
     }
     async findById(id: string): Promise<Task | null> {
         return this.tasks.find(task => task.id === id) || null;
-         
     }
+
+    update(task: Task): Promise<Task>{
+        const index = this.tasks.findIndex(t => t.id == UpdateTaskUseCase.id);
+        this.tasks[index] = updateTask;
+        return UpdateTaskUseCase;
+    }
+
+    async delete(id: string): Promise<boolean>{
+        const index = this.tasks.findIndex(t => t.id == id);
+        if (index === -1) return false;
+        this.tasks.splice(index, 1);
+        return true;
+    }
+         
+    
 
 }
 
