@@ -1,19 +1,24 @@
-import {Module} from '@nestjs/common';
+import { Module } from '@nestjs/common'; // ← quitar Delete
 import { CreateTaskUseCase } from '../application/create-task.use-case';
 import { TaskRepositoryImpl } from './persistence/task.repository.impl';
-import { TaskController } from './controlers/task.controller';
+import { TasksController } from './controlers/task.controller'; // ← TasksController con "s"
 import { ITaskRepositoryToken } from '../domain/task.repository.interface';
+import { GetTaskByIdUseCase } from '../application/get-task-by-id.use-case';
+import { UpdateTaskUseCase } from '../application/update-task.use-case';
+import { DeleteTaskUseCase } from '../application/delete-task.use-case';
 
 @Module({
-    controllers: [ TaskController ],
-    providers: [
-        CreateTaskUseCase,
-        {
-            provide: ITaskRepositoryToken,
-            useClass: TaskRepositoryImpl     // Cambiar si la DB cambia, por ejemplo, a MongoDB o PostgreSQL
-        }
-    ],
-    exports: [ CreateTaskUseCase ]
+  controllers: [TasksController], // ← TasksController con "s"
+  providers: [
+    CreateTaskUseCase,
+    GetTaskByIdUseCase,
+    UpdateTaskUseCase,
+    DeleteTaskUseCase,
+    {
+      provide: ITaskRepositoryToken,
+      useClass: TaskRepositoryImpl,
+    },
+  ],
+  exports: [CreateTaskUseCase],
 })
-
 export class TaskModule {}
