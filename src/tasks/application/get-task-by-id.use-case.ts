@@ -8,7 +8,7 @@ export class GetTaskByIdUseCase {
       @Inject(ITaskRepositoryToken) 
       private readonly taskRepository: ITaskRepository
     ) {}
-    async execute(id: string): Promise<Task> {
+    async execute(id: number): Promise<Task> {
         const task = await this.taskRepository.findById(id);
         if (!task)
             throw new Error('La tarea ${id} no existe');

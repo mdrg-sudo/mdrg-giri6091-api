@@ -7,7 +7,7 @@ export class DeleteTaskUseCase {
         private readonly taskRepository: taskRepositoryInterface.ITaskRepository
     ){}
 
-    async execute(id: string): Promise<void>{
+    async execute(id: number): Promise<void>{
         const deleted = await this.taskRepository.delete(id);
         if(!deleted)
             throw new NotFoundException('La tarea ${id} no existe');
