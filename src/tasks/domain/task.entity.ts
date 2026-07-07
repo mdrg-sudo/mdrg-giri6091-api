@@ -2,9 +2,6 @@
 //! Entity: MOdelo de datos
 
 export class Task{
-    static complete() {
-        throw new Error("Method not implemented.");
-    }
     constructor(
         public readonly id: number | null, 
         public title: string,
